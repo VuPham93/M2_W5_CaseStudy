@@ -10,14 +10,17 @@ public class StartClient {
         try {
             Client client = new Client("Client");
             ServerIF server = (ServerIF) Naming.lookup("rmi://192.168.2.205/Download");
-            server.sendData(client);
 
-            System.out.println("Listening......");
+            System.out.println("Connected to server");
+
             Scanner scanner = new Scanner(System.in);
 
-            while (true) {
-                String line = scanner.nextLine();
-            }
+            server.getPath(client.sendPath());
+            server.sendData(client);
+//
+//            while (true) {
+//                String line = scanner.nextLine();
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

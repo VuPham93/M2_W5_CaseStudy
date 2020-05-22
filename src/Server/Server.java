@@ -33,4 +33,9 @@ public class Server extends UnicastRemoteObject implements ServerIF {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void getPath(String client) throws RemoteException {
+        this.file = file;
+    }
 }

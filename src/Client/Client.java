@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Scanner;
 
 public class Client extends UnicastRemoteObject implements ClientIF {
     private static final long serialVersionUID = 1L;
@@ -32,7 +33,9 @@ public class Client extends UnicastRemoteObject implements ClientIF {
     }
 
     @Override
-    public String getName() throws RemoteException {
-        return name;
+    public String sendPath() throws RemoteException {
+        System.out.println("What file to download?");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 }
