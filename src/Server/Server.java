@@ -9,10 +9,12 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class Server extends UnicastRemoteObject implements ServerIF {
     private String file = "";
+
     protected Server() throws RemoteException {
         super();
     }
 
+    @Override
     public void setFile(String file) {
         this.file = file;
     }
@@ -32,10 +34,5 @@ public class Server extends UnicastRemoteObject implements ServerIF {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void getPath(String client) throws RemoteException {
-        this.file = file;
     }
 }

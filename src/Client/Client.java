@@ -5,10 +5,12 @@ import java.io.FileOutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Scanner;
+import java.util.SortedMap;
 
 public class Client extends UnicastRemoteObject implements ClientIF {
     private static final long serialVersionUID = 1L;
     public String name;
+    public String path;
 
     public Client(String name) throws RemoteException {
         super();
@@ -18,7 +20,7 @@ public class Client extends UnicastRemoteObject implements ClientIF {
     @Override
     public void getData(String fileName, byte[] data, int length) throws RemoteException {
         try {
-            File file = new File(fileName);
+            File file = new File(path + "/" + fileName);
             file.createNewFile();
             FileOutputStream outputStream = new FileOutputStream(file, true);
 
@@ -32,10 +34,11 @@ public class Client extends UnicastRemoteObject implements ClientIF {
         }
     }
 
-    @Override
-    public String sendPath() throws RemoteException {
-        System.out.println("What file to download?");
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+    public String setDestination() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

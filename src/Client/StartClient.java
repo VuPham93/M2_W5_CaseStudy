@@ -15,12 +15,14 @@ public class StartClient {
 
             Scanner scanner = new Scanner(System.in);
 
-            server.getPath(client.sendPath());
+            System.out.println("What file to copy");
+            server.setFile(scanner.nextLine());
+
+            System.out.println("Where to save?");
+            client.setPath(scanner.nextLine());
+
             server.sendData(client);
-//
-//            while (true) {
-//                String line = scanner.nextLine();
-//            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

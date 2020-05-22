@@ -5,6 +5,4 @@ import java.rmi.RemoteException;
 
 public interface ClientIF extends Remote {
     public void getData(String fileName, byte[] data, int length) throws RemoteException;
-
-    public String sendPath() throws RemoteException;
 }
