@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -16,7 +17,7 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <Pane layoutX="488.0" layoutY="100.0" AnchorPane.bottomAnchor="73.0" AnchorPane.topAnchor="100.0">
+        <Pane layoutX="472.0" layoutY="87.0" AnchorPane.bottomAnchor="86.0" AnchorPane.topAnchor="87.0">
             <children>
                 <TextField fx:id="txtUserName" layoutX="7.0" prefHeight="34.0" prefWidth="275.0" promptText="username or email" />
                 <PasswordField fx:id="txtPassword" layoutX="7.0" layoutY="61.0" prefHeight="34.0" prefWidth="275.0" promptText="password" stylesheets="@../styling/SignInStyling.css" />
@@ -55,5 +56,8 @@
                 </Label>
             </children>
         </Pane>
+      <FontAwesomeIcon />
+      <FontAwesomeIcon fx:id="btnClose" fill="#2d3180" glyphName="CLOSE" layoutX="816.0" layoutY="40.0" onMouseClicked="#closeWindow" size="30" />
+      <FontAwesomeIcon fx:id="btnMin" fill="#2d3180" glyphName="MINUS" layoutX="779.0" layoutY="40.0" onMouseClicked="#minWindow" size="27" text="" />
     </children>
 </AnchorPane>

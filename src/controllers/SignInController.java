@@ -1,9 +1,7 @@
 package controllers;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -11,10 +9,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import java.io.IOException;
+import users.UserChecker;
 
 public class SignInController {
+
+    @FXML
+    private FontAwesomeIcon btnClose;
+
+    @FXML
+    private FontAwesomeIcon btnMin;
 
     @FXML
     private TextField txtUserName;
@@ -37,9 +40,21 @@ public class SignInController {
     @FXML
     private Label lblErrors;
 
+    @FXML
+    void closeWindow() {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void minWindow() {
+        Stage stage = (Stage) btnMin.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
     public void openHomePanel(MouseEvent event) {
-        if (signIn()) {
-            SwitchPanel.switchPanel(event,"/fxml/Home.fxml" );
+        if (checkSignInInfo()) {
+            SwitchPanel.switchPanel(event,"/fxml/Home.fxml");
         }
     }
 
@@ -47,16 +62,17 @@ public class SignInController {
         SwitchPanel.switchPanel(event, "/fxml/SignUp.fxml");
     }
 
-    private boolean signIn() {
+    private boolean checkSignInInfo() {
         boolean status = true;
-        String name = txtUserName.getText();
+        String nameOrEmail = txtUserName.getText();
         String password = txtPassword.getText();
+        UserChecker userChecker = new UserChecker();
 
-        if (name.isEmpty() || password.isEmpty()) {
+        if (nameOrEmail.isEmpty() || password.isEmpty()) {
             signInStatus(Color.TOMATO, "Empty credentials");
             status = false;
         } else {
-            if (!name.equals("admin") || !password.equals("123")) {
+            if (!userChecker.isUser(nameOrEmail, password)) {
                 signInStatus(Color.TOMATO, "Enter Correct Email/Password");
                 status = false;
             }
@@ -71,4 +87,5 @@ public class SignInController {
         lblErrors.setTextFill(color);
         lblErrors.setText(text);
     }
+
 }

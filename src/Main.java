@@ -14,7 +14,7 @@ public class Main extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignIn.fxml"));
-        stage.initStyle(StageStyle.DECORATED);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setResizable(false);
 
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
