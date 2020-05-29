@@ -1,5 +1,6 @@
 package controllers;
 
+import Client.PathChooser;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -67,10 +68,11 @@ public class JavaScriptPanelController implements Initializable {
     }
 
     public void clickItem(MouseEvent event) {
+        Stage stage = (Stage) tbData.getScene().getWindow();
         if (event.getClickCount() == 2) {
-            System.out.println(tbData.getSelectionModel().getSelectedItem().getSerial());
-            System.out.println(tbData.getSelectionModel().getSelectedItem().getName());
-            System.out.println(tbData.getSelectionModel().getSelectedItem().getDetail());
+            PathChooser pathChooserDemo = new PathChooser();
+            pathChooserDemo.choosePath(event, stage);
+            System.out.println(pathChooserDemo.getPath());
         }
     }
 
