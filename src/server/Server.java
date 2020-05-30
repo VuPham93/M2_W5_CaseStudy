@@ -42,7 +42,7 @@ public class Server extends UnicastRemoteObject implements ISentFile, IUserManag
 
     //Lấy danh sách thư viện JavaScript từ server:
     @Override
-    public ArrayList<JavaScriptLibrary> getJSLibrary() throws RemoteException {
+    public ArrayList<JavaScriptLibrary> getLibrary() throws RemoteException {
         FileReaderAndWriter<JavaScriptLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
         return (ArrayList<JavaScriptLibrary>) fileReaderAndWriter.readFile("/src/library/javaScript/JavaScriptLibrary.txt");
     }

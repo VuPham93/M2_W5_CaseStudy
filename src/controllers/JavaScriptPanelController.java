@@ -82,7 +82,7 @@ public class JavaScriptPanelController implements Initializable {
 
     //Gọi interface ILibraryManager:
     ILibraryManager libraryManager = (ILibraryManager) Naming.lookup("rmi://192.168.1.68/Server");
-    ArrayList<JavaScriptLibrary> list = libraryManager.getJSLibrary();
+    ArrayList<JavaScriptLibrary> list = libraryManager.getLibrary();
 
     //Lấy dữ liệu trả về từ server hiển thị lên bảng:
     private final ObservableList<JavaScriptLibrary> javaScriptLibraries = FXCollections.observableArrayList(list);
