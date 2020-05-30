@@ -4,18 +4,19 @@ import client.Client;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import library.javaScript.JavaScriptLibrary;
+import library.Library;
 import server.serverInterface.ISentFile;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-public class FileDownloadManager {
-    public void downLoadFile(MouseEvent event, TableView<JavaScriptLibrary> tbData) throws RemoteException, NotBoundException, MalformedURLException {
+public class FileDownloadManager<LibraryType extends Library> {
+
+    public void downLoadFile(MouseEvent event, TableView<LibraryType> tbData) throws RemoteException, NotBoundException, MalformedURLException {
         //Lấy thông tin vị trí file trên server từ dòng bị kích đúp chuột:
         Stage stage = (Stage) tbData.getScene().getWindow();
-        JavaScriptLibrary selectedItem = tbData.getSelectionModel().getSelectedItem();
+        LibraryType selectedItem = tbData.getSelectionModel().getSelectedItem();
         String selectedItemPath = selectedItem.getPath();
 
         //Gọi interface gửi file đã lấy được địa chỉ từ server:

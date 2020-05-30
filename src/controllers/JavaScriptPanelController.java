@@ -96,7 +96,7 @@ public class JavaScriptPanelController implements Initializable {
     //Kích đúp vào dòng để download:
     public void clickItem(MouseEvent event) throws RemoteException, NotBoundException, MalformedURLException {
         if (event.getClickCount() == 2) {
-            FileDownloadManager downLoadFile = new FileDownloadManager();
+            FileDownloadManager<JavaScriptLibrary> downLoadFile = new FileDownloadManager<JavaScriptLibrary>();
             downLoadFile.downLoadFile(event, tbData);
 
 //            try {
