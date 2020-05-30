@@ -1,6 +1,6 @@
 package controllers;
 
-import server.IUserManager;
+import server.serverInterface.IUserManager;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import tools.SwitchPanel;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

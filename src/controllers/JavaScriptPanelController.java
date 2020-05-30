@@ -1,6 +1,5 @@
 package controllers;
 
-import client.PathChooser;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +11,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import library.javaScript.JavaScriptLibrary;
-import server.ILibraryManager;
+import server.serverInterface.ILibraryManager;
+import tools.FileDownloadManager;
+import tools.SwitchPanel;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -74,32 +75,36 @@ public class JavaScriptPanelController implements Initializable {
         SwitchPanel.switchPanel(event, "/fxml/Home.fxml");
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        loadLibrary();
+    }
+
     //Gọi interface ILibraryManager:
     ILibraryManager libraryManager = (ILibraryManager) Naming.lookup("rmi://192.168.1.68/Server");
     ArrayList<JavaScriptLibrary> list = libraryManager.getJSLibrary();
 
     //Lấy dữ liệu trả về từ server hiển thị lên bảng:
     private final ObservableList<JavaScriptLibrary> javaScriptLibraries = FXCollections.observableArrayList(list);
-
     private void loadLibrary() {
         colSerial.setCellValueFactory(new PropertyValueFactory<>("serial"));
         colLesson.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colDetails.setCellValueFactory(new PropertyValueFactory<>("detail"));
+        colDetails.setCellValueFactory(new PropertyValueFactory<>("path"));
         tbData.setItems(javaScriptLibraries);
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        loadLibrary();
-    }
-
-    //Kích đúp dòng hiển thị bảng download:
-    public void clickItem(MouseEvent event) {
-        Stage stage = (Stage) tbData.getScene().getWindow();
+    //Kích đúp vào dòng để download:
+    public void clickItem(MouseEvent event) throws RemoteException, NotBoundException, MalformedURLException {
         if (event.getClickCount() == 2) {
-            PathChooser pathChooserDemo = new PathChooser();
-            pathChooserDemo.choosePath(event, stage);
-            System.out.println(pathChooserDemo.getPath());
+            FileDownloadManager downLoadFile = new FileDownloadManager();
+            downLoadFile.downLoadFile(event, tbData);
+
+//            try {
+//                Desktop.getDesktop().open(new File("C:\\Users\\hurah\\Desktop\\Slide04-JavaScriptOverview.pdf"));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+
         }
     }
 }

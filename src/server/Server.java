@@ -1,8 +1,11 @@
 package server;
 
-import client.ClientIF;
-import library.FileReaderAndWriter;
+import client.clientInterface.IGetFile;
+import tools.FileReaderAndWriter;
 import library.javaScript.JavaScriptLibrary;
+import server.serverInterface.ILibraryManager;
+import server.serverInterface.ISentFile;
+import server.serverInterface.IUserManager;
 import users.UserChecker;
 
 import java.io.File;
@@ -11,34 +14,12 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-public class Server extends UnicastRemoteObject implements ServerIF, IUserManager, ILibraryManager {
+public class Server extends UnicastRemoteObject implements ISentFile, IUserManager, ILibraryManager {
     private final UserChecker userChecker = new UserChecker();
-    private String file = "";
+    private String originalFile;
 
     protected Server() throws RemoteException {
         super();
-    }
-
-    @Override
-    public void setFile(String file) {
-        this.file = file;
-    }
-
-    @Override
-    public void sendData(ClientIF client) throws RemoteException {
-        try {
-            File file1 = new File(file);
-            FileInputStream inputStream = new FileInputStream(file1);
-            byte[] myData = new byte[1024*1024];
-            int length = inputStream.read(myData);
-            while (length > 0) {
-                client.getData(file1.getName(), myData, length);
-                length = inputStream.read(myData);
-            }
-            inputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     //Server kiểm tra thông tin đăng nhập:
@@ -65,4 +46,31 @@ public class Server extends UnicastRemoteObject implements ServerIF, IUserManage
         FileReaderAndWriter<JavaScriptLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
         return (ArrayList<JavaScriptLibrary>) fileReaderAndWriter.readFile("/src/library/javaScript/JavaScriptLibrary.txt");
     }
+
+    //Lấy file cần chuyển đi:
+    @Override
+    public void getRequestedFile(String fileName) throws RemoteException {
+        this.originalFile = fileName;
+    }
+
+    //Chuyển file cho client:
+    @Override
+    public void sendData(IGetFile client) throws RemoteException {
+        try {
+            File sendFile = new File(originalFile);
+            FileInputStream inputStream = new FileInputStream(sendFile);
+            byte[] myData = new byte[1024*1024];
+            int length = inputStream.read(myData);
+
+            while (length > 0) {
+                client.getData(sendFile.getName(), myData, length);
+                length = inputStream.read(myData);
+            }
+
+            inputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

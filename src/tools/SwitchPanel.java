@@ -1,4 +1,4 @@
-package controllers;
+package tools;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +14,7 @@ public class SwitchPanel {
     private static double xOffset = 0;
     private static double yOffset = 0;
 
+    //Chuyển qua lại giữa các giao diện:
     public static void switchPanel(MouseEvent event, String path) {
         try {
             Node node = (Node) event.getSource();
@@ -24,6 +25,7 @@ public class SwitchPanel {
             stage.setScene(scene);
             stage.show();
 
+            //Sự kiện kéo thả cho giao diện:
             scene.setOnMousePressed(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {

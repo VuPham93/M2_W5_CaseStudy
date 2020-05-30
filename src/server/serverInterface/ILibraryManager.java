@@ -1,4 +1,4 @@
-package server;
+package server.serverInterface;
 
 import library.javaScript.JavaScriptLibrary;
 

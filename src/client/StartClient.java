@@ -1,6 +1,6 @@
 package client;
 
-import server.ServerIF;
+import server.serverInterface.ISentFile;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ public class StartClient extends Application {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setResizable(false);
 
-        //Sự kiện kéo thả cho phần mềm:
+        //Sự kiện kéo thả cho giao diện:
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -49,7 +49,7 @@ public class StartClient extends Application {
     public static void main(String[] args) {
         try {
             Client client = new Client("client");
-            ServerIF server = (ServerIF) Naming.lookup("rmi://192.168.1.68/Server");
+            ISentFile server = (ISentFile) Naming.lookup("rmi://192.168.1.68/Server");
 
             System.out.println("Connected to server");
 

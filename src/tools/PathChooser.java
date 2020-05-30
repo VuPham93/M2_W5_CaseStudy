@@ -1,4 +1,4 @@
-package client;
+package tools;
 
 import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
