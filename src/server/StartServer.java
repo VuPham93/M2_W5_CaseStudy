@@ -1,4 +1,4 @@
-package Server;
+package server;
 
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
@@ -10,7 +10,7 @@ public class StartServer {
 
             Server server = new Server();
 
-            Naming.rebind("rmi://192.168.2.205/Download", server);
+            Naming.rebind("rmi://192.168.1.68/Server", server);
 
             System.out.println("Server is Ready");
 

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;" stylesheets="@../styling/SignInStyling.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
+<AnchorPane id="AnchorPane" fx:id="SignUpPanel" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;" stylesheets="@../styling/SignInStyling.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
     <children>
         <AnchorPane prefHeight="503.0" prefWidth="382.0" style="-fx-background-color: #262721;" stylesheets="@../styling/SignInStyling.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>

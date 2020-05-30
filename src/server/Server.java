@@ -1,13 +1,15 @@
-package Server;
+package server;
 
-import Client.ClientIF;
+import client.ClientIF;
+import users.UserChecker;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class Server extends UnicastRemoteObject implements ServerIF {
+public class Server extends UnicastRemoteObject implements ServerIF, IUserManager {
+    private final UserChecker userChecker = new UserChecker();
     private String file = "";
 
     protected Server() throws RemoteException {
@@ -34,5 +36,23 @@ public class Server extends UnicastRemoteObject implements ServerIF {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    //Server kiểm tra thông tin đăng nhập:
+    @Override
+    public boolean checkUser(String nameOrEmail, String password) throws RemoteException {
+        return userChecker.isUser(nameOrEmail, password);
+    }
+
+    //Server kiểm tra user có tồn tại không:
+    @Override
+    public boolean checkValidUser(String userNameOrEmail) throws RemoteException {
+        return userChecker.isValidUser(userNameOrEmail);
+    }
+
+    //Server lưu user mới:
+    @Override
+    public void saveNewUser(String name, String email, String password) throws RemoteException {
+        userChecker.saveNewUser(name, email, password);
     }
 }

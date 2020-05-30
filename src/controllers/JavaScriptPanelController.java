@@ -1,6 +1,6 @@
 package controllers;
 
-import Client.PathChooser;
+import client.PathChooser;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

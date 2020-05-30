@@ -1,6 +1,6 @@
-package Server;
+package server;
 
-import Client.ClientIF;
+import client.ClientIF;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
