@@ -11,14 +11,21 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import library.FileReaderAndWriter;
 import library.javaScript.JavaScriptLibrary;
+import server.ILibraryManager;
 
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class JavaScriptPanelController implements Initializable {
+
+    public JavaScriptPanelController() throws RemoteException, NotBoundException, MalformedURLException {
+    }
 
     @FXML
     private FontAwesomeIcon btnClose;
@@ -67,19 +74,12 @@ public class JavaScriptPanelController implements Initializable {
         SwitchPanel.switchPanel(event, "/fxml/Home.fxml");
     }
 
-    public void clickItem(MouseEvent event) {
-        Stage stage = (Stage) tbData.getScene().getWindow();
-        if (event.getClickCount() == 2) {
-            PathChooser pathChooserDemo = new PathChooser();
-            pathChooserDemo.choosePath(event, stage);
-            System.out.println(pathChooserDemo.getPath());
-        }
-    }
+    //Gọi interface ILibraryManager:
+    ILibraryManager libraryManager = (ILibraryManager) Naming.lookup("rmi://192.168.1.68/Server");
+    ArrayList<JavaScriptLibrary> list = libraryManager.getJSLibrary();
 
-    FileReaderAndWriter<JavaScriptLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
-    ArrayList<JavaScriptLibrary> list = (ArrayList<JavaScriptLibrary>) fileReaderAndWriter.readFile("/src/library/javaScript/JavaScriptLibrary.txt");
-
-    private ObservableList<JavaScriptLibrary> javaScriptLibraries = FXCollections.observableArrayList(list);
+    //Lấy dữ liệu trả về từ server hiển thị lên bảng:
+    private final ObservableList<JavaScriptLibrary> javaScriptLibraries = FXCollections.observableArrayList(list);
 
     private void loadLibrary() {
         colSerial.setCellValueFactory(new PropertyValueFactory<>("serial"));
@@ -91,5 +91,15 @@ public class JavaScriptPanelController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadLibrary();
+    }
+
+    //Kích đúp dòng hiển thị bảng download:
+    public void clickItem(MouseEvent event) {
+        Stage stage = (Stage) tbData.getScene().getWindow();
+        if (event.getClickCount() == 2) {
+            PathChooser pathChooserDemo = new PathChooser();
+            pathChooserDemo.choosePath(event, stage);
+            System.out.println(pathChooserDemo.getPath());
+        }
     }
 }

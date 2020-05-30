@@ -104,7 +104,7 @@ public class SignUpController {
         }
 
         try {
-            if (userManager.checkValidUser(name)) {
+            if (!userManager.checkValidUser(name)) {
                 signUpStatus(Color.TOMATO, "Username already exists", lblUserErrors);
                 status = false;
             }
@@ -128,7 +128,7 @@ public class SignUpController {
         }
 
         try {
-            if (userManager.checkValidUser(email)) {
+            if (!userManager.checkValidUser(email)) {
                 signUpStatus(Color.TOMATO, "Username already exists", lblEmailErrors);
                 status = false;
             }

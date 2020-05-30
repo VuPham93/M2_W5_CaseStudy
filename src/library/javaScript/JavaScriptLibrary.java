@@ -2,7 +2,9 @@ package library.javaScript;
 
 import library.Library;
 
-public class JavaScriptLibrary extends Library {
+import java.io.Serializable;
+
+public class JavaScriptLibrary extends Library implements Serializable {
     private String detail;
 
     public JavaScriptLibrary() {
@@ -19,5 +21,9 @@ public class JavaScriptLibrary extends Library {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public String toString() {
+        return "Name: " + getName() + " | path: " + getPath();
     }
 }

@@ -1,14 +1,17 @@
 package server;
 
 import client.ClientIF;
+import library.FileReaderAndWriter;
+import library.javaScript.JavaScriptLibrary;
 import users.UserChecker;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
-public class Server extends UnicastRemoteObject implements ServerIF, IUserManager {
+public class Server extends UnicastRemoteObject implements ServerIF, IUserManager, ILibraryManager {
     private final UserChecker userChecker = new UserChecker();
     private String file = "";
 
@@ -54,5 +57,12 @@ public class Server extends UnicastRemoteObject implements ServerIF, IUserManage
     @Override
     public void saveNewUser(String name, String email, String password) throws RemoteException {
         userChecker.saveNewUser(name, email, password);
+    }
+
+    //Lấy danh sách thư viện JavaScript từ server:
+    @Override
+    public ArrayList<JavaScriptLibrary> getJSLibrary() throws RemoteException {
+        FileReaderAndWriter<JavaScriptLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
+        return (ArrayList<JavaScriptLibrary>) fileReaderAndWriter.readFile("/src/library/javaScript/JavaScriptLibrary.txt");
     }
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileReaderAndWriter<ObjectType> {
+    //Ghi danh sách:
     public void writeToFile(ArrayList<ObjectType> objects, String path) {
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
@@ -22,6 +23,7 @@ public class FileReaderAndWriter<ObjectType> {
         }
     }
 
+    //Đọc danh sách:
     public List<ObjectType> readFile(String path) {
         List<ObjectType> objects = new ArrayList<>();
         FileInputStream fileInputStream = null;
@@ -37,7 +39,7 @@ public class FileReaderAndWriter<ObjectType> {
             }
 
         } catch (EOFException e) {
-            System.out.println("End of file");
+            System.out.println("End of file in path: " + path);
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
