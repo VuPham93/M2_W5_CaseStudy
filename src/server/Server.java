@@ -26,7 +26,7 @@ public class Server extends UnicastRemoteObject implements ISentFile, IUserManag
 
     //Server kiểm tra thông tin đăng nhập:
     @Override
-    public boolean checkUser(String nameOrEmail, String password) throws RemoteException {
+    public String checkUser(String nameOrEmail, String password) throws RemoteException {
         return userChecker.isUser(nameOrEmail, password);
     }
 

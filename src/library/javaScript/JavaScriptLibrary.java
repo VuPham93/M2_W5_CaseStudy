@@ -10,7 +10,7 @@ public class JavaScriptLibrary extends Library implements Serializable {
     public JavaScriptLibrary() {
     }
 
-    public JavaScriptLibrary(int serial, String name, String size, String path, String detail) {
+    public JavaScriptLibrary(String serial, String name, String size, String path, String detail) {
         super(serial, name, size, path);
         this.detail = detail;
     }

@@ -8,7 +8,7 @@ public class SoftwareLibrary extends Library {
     public SoftwareLibrary() {
     }
 
-    public SoftwareLibrary(int serial, String name, String size, String path, String developer) {
+    public SoftwareLibrary(String serial, String name, String size, String path, String developer) {
         super(serial, name, size, path);
         this.developer = developer;
     }

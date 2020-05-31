@@ -5,18 +5,23 @@ import tools.FileReaderAndWriter;
 import java.util.ArrayList;
 
 public class UserChecker {
-    public boolean isUser(String firstInput, String secondInput) {
+    public String isUser(String firstInput, String secondInput) {
         FileReaderAndWriter<User> fileReaderAndWriter = new FileReaderAndWriter<>();
         ArrayList<User> usersList = (ArrayList<User>) fileReaderAndWriter.readFile("/src/users/UsersList.txt");
 
         for (User user: usersList) {
             if (firstInput.equals(user.getName()) || firstInput.equals(user.getEmail())) {
                 if (secondInput.equals(user.getPassword())) {
-                    return true;
+                    if ((user.getType()).equals("Admin")) {
+                        return "Admin";
+                    }
+                    else {
+                        return "true";
+                    }
                 }
             }
         }
-        return false;
+        return "false";
     }
 
     public boolean isValidUser(String input) {
@@ -32,7 +37,7 @@ public class UserChecker {
     }
 
     public void saveNewUser(String name, String email, String password) {
-        User user = new User(name, email, password);
+        User user = new User(name, email, password, "User");
         FileReaderAndWriter<User> fileReaderAndWriter = new FileReaderAndWriter<>();
 
         ArrayList<User> usersList = (ArrayList<User>) fileReaderAndWriter.readFile("/src/users/UsersList.txt");

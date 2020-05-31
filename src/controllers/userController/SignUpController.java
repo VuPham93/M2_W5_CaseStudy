@@ -1,4 +1,4 @@
-package controllers;
+package controllers.userController;
 
 import server.serverInterface.IUserManager;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -19,8 +19,6 @@ import java.rmi.RemoteException;
 import java.util.regex.Pattern;
 
 public class SignUpController {
-    public SignUpController() throws RemoteException, NotBoundException, MalformedURLException {
-    }
 
     @FXML
     private FontAwesomeIcon btnClose;
@@ -73,7 +71,14 @@ public class SignUpController {
     }
 
     //Gọi interface IUserManager:
-    IUserManager userManager = (IUserManager) Naming.lookup("rmi://192.168.1.68/Server");
+    IUserManager userManager;
+    {
+        try {
+            userManager = (IUserManager) Naming.lookup("rmi://192.168.1.68/Server");
+        } catch (NotBoundException | MalformedURLException | RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 
     //Lưu thông tin đăng ký:
     public void signUp(MouseEvent event) {

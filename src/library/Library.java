@@ -3,7 +3,7 @@ package library;
 import java.io.Serializable;
 
 public abstract class Library implements Serializable {
-    private int serial;
+    private String serial;
     private String name;
     private String size;
     private String path;
@@ -11,18 +11,18 @@ public abstract class Library implements Serializable {
     public Library() {
     }
 
-    public Library(int serial, String name, String size, String path) {
+    public Library(String serial, String name, String size, String path) {
         this.serial = serial;
         this.name = name;
         this.size = size;
         this.path = path;
     }
 
-    public int getSerial() {
+    public String getSerial() {
         return serial;
     }
 
-    public void setSerial(int serial) {
+    public void setSerial(String serial) {
         this.serial = serial;
     }
 

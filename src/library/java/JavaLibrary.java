@@ -8,7 +8,7 @@ public class  JavaLibrary extends Library {
     public JavaLibrary() {
     }
 
-    public JavaLibrary(int serial, String name, String size, String path, String detail) {
+    public JavaLibrary(String serial, String name, String size, String path, String detail) {
         super(serial, name, size, path);
         this.detail = detail;
     }

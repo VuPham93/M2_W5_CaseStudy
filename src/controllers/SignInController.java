@@ -19,9 +19,6 @@ import java.rmi.RemoteException;
 
 public class SignInController {
 
-    public SignInController() throws RemoteException, NotBoundException, MalformedURLException {
-    }
-
     @FXML
     private FontAwesomeIcon btnClose;
 
@@ -63,43 +60,59 @@ public class SignInController {
 
     //Kiểm tra thông tin, nếu đúng vào màn hình chính:
     public void openHomePanel(MouseEvent event) {
-        if (checkSignInInfo()) {
-            SwitchPanel.switchPanel(event,"/fxml/Home.fxml");
+        if (checkSignInInfo().equals("Admin")) {
+            SwitchPanel.switchPanel(event, "/fxml/adminFxml/AdminHome.fxml");
+        }
+        if (checkSignInInfo().equals("User")) {
+            SwitchPanel.switchPanel(event, "/fxml/userFxml/Home.fxml");
         }
     }
 
     //Vào màn hình đăng ký:
     public void openSignUpPanel(MouseEvent event) {
-        SwitchPanel.switchPanel(event, "/fxml/SignUp.fxml");
+        SwitchPanel.switchPanel(event, "/fxml/userFxml/SignUp.fxml");
     }
 
     //Gọi interface IUserManager:
-    IUserManager userManager = (IUserManager) Naming.lookup("rmi://192.168.1.68/Server");
+    IUserManager userManager;
+    {
+        try {
+            userManager = (IUserManager) Naming.lookup("rmi://192.168.1.68/Server");
+        } catch (NotBoundException | MalformedURLException | RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 
     //Kiểm tra thông tin đăng nhập qua IUserManager:
-    private boolean checkSignInInfo() {
-        boolean status = true;
+    private String checkSignInInfo() {
+        String status = "";
         String nameOrEmail = txtUserName.getText();
         String password = txtPassword.getText();
 
         if (nameOrEmail.isEmpty() || password.isEmpty()) {
             signInStatus(Color.TOMATO, "Empty credentials");
-            status = false;
+            status = "false";
         }
         else {
             try {
-                if (!userManager.checkUser(nameOrEmail, password)) {
+                if ((userManager.checkUser(nameOrEmail, password)).equals("false")) {
                     signInStatus(Color.TOMATO, "Enter Correct Email/Password");
-                    status = false;
+                    status = "false";
                 }
                 else {
-                    signInStatus(Color.GREEN, "Login Successful..Redirecting..");
+                    if ((userManager.checkUser(nameOrEmail, password)).equals("Admin")) {
+                        signInStatus(Color.GREEN, "Admin login Successful..Redirecting..");
+                        status = "Admin";
+                    }
+                    else {
+                        signInStatus(Color.GREEN, "Login Successful..Redirecting..");
+                        status = "User";
+                    }
                 }
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
         }
-
         return status;
     }
 

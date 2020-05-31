@@ -1,14 +1,13 @@
-package controllers;
+package controllers.userController;
 
+import controllers.LibraryController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import library.javaScript.JavaScriptLibrary;
 import server.serverInterface.ILibraryManager;
-import tools.LibraryController;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -21,13 +20,19 @@ public class JavaScriptPanelController extends LibraryController<JavaScriptLibra
     private TableView<JavaScriptLibrary> tbData;
 
     @FXML
-    private TableColumn<JavaScriptLibrary, Integer> colSerial;
+    private TableColumn<JavaScriptLibrary, String> colSerial;
 
     @FXML
     private TableColumn<JavaScriptLibrary, String> colLesson;
 
     @FXML
     private TableColumn<JavaScriptLibrary, String> colDetails;
+
+    @FXML
+    private TableColumn<JavaScriptLibrary, String> colFileSize;
+
+    @FXML
+    private TableColumn<JavaScriptLibrary, String> colPath;
 
     @Override
     public void loadLibrary() throws RemoteException, NotBoundException, MalformedURLException {
@@ -37,10 +42,7 @@ public class JavaScriptPanelController extends LibraryController<JavaScriptLibra
 
         //Lấy dữ liệu trả về từ server hiển thị lên bảng:
         ObservableList<JavaScriptLibrary> javaScriptLibraries = FXCollections.observableArrayList(list);
-
-        colSerial.setCellValueFactory(new PropertyValueFactory<>("serial"));
-        colLesson.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colDetails.setCellValueFactory(new PropertyValueFactory<>("path"));
         tbData.setItems(javaScriptLibraries);
     }
+
 }

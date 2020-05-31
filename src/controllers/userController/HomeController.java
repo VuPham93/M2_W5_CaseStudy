@@ -1,4 +1,4 @@
-package controllers;
+package controllers.userController;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.fxml.FXML;
@@ -49,12 +49,12 @@ public class HomeController {
 
     @FXML
     void openJavaScriptPanel(MouseEvent event) {
-        SwitchPanel.switchPanel(event, "/fxml/JavaScript.fxml");
+        SwitchPanel.switchPanel(event, "/fxml/userFxml/JavaScript.fxml");
     }
 
     @FXML
     void openJavaPanel(MouseEvent event) {
-        SwitchPanel.switchPanel(event, "/fxml/Java.fxml");
+        SwitchPanel.switchPanel(event, "/fxml/userFxml/Java.fxml");
     }
 
     @FXML

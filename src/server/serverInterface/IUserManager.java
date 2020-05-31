@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface IUserManager extends Remote {
-    boolean checkUser(String nameOrEmail, String password) throws RemoteException;
+    String checkUser(String nameOrEmail, String password) throws RemoteException;
 
     boolean checkValidUser(String input) throws RemoteException;
 

@@ -1,14 +1,13 @@
-package controllers;
+package controllers.userController;
 
+import controllers.LibraryController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import library.java.JavaLibrary;
 import server.serverInterface.ILibraryManager;
-import tools.LibraryController;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -37,10 +36,6 @@ public class JavaPanelController extends LibraryController<JavaLibrary>  {
 
         //Lấy dữ liệu trả về từ server hiển thị lên bảng:
         ObservableList<JavaLibrary> javaLibraries = FXCollections.observableArrayList(list);
-
-        colSerial.setCellValueFactory(new PropertyValueFactory<>("serial"));
-        colLesson.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colDetails.setCellValueFactory(new PropertyValueFactory<>("path"));
         tbData.setItems(javaLibraries);
     }
 }

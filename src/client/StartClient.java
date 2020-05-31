@@ -1,6 +1,5 @@
 package client;
 
-import server.serverInterface.ISentFile;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -9,8 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.rmi.Naming;
 
 public class StartClient extends Application {
     private double xOffset = 0;
@@ -48,11 +45,7 @@ public class StartClient extends Application {
     //Khởi chạy phần mềm:
     public static void main(String[] args) {
         try {
-            Client client = new Client("client");
-            ISentFile server = (ISentFile) Naming.lookup("rmi://192.168.1.68/Server");
-
             System.out.println("Connected to server");
-
             //Bật màn hình đăng nhập:
             launch(args);
 
