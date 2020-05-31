@@ -54,12 +54,12 @@ public class HomeController {
 
     @FXML
     void openJavaPanel(MouseEvent event) {
-        SwitchPanel.switchPanel(event, "/fxml/JavaScript.fxml");
+        SwitchPanel.switchPanel(event, "/fxml/Java.fxml");
     }
 
     @FXML
     void openSoftWarePanel(MouseEvent event) {
-        SwitchPanel.switchPanel(event, "/fxml/JavaScript.fxml");
+        SwitchPanel.switchPanel(event, "/fxml/Software.fxml");
     }
 
 

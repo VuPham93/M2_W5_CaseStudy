@@ -2,12 +2,12 @@ package server;
 
 import client.clientInterface.IGetFile;
 import library.java.JavaLibrary;
-import library.software.SoftwareLibrary;
-import tools.FileReaderAndWriter;
 import library.javaScript.JavaScriptLibrary;
+import library.software.SoftwareLibrary;
 import server.serverInterface.ILibraryManager;
 import server.serverInterface.ISentFile;
 import server.serverInterface.IUserManager;
+import tools.FileReaderAndWriter;
 import users.UserChecker;
 
 import java.io.File;
@@ -53,14 +53,14 @@ public class Server extends UnicastRemoteObject implements ISentFile, IUserManag
     @Override
     public ArrayList<JavaLibrary> getJavaLibrary() throws RemoteException {
         FileReaderAndWriter<JavaLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
-        return (ArrayList<JavaLibrary>) fileReaderAndWriter.readFile("/src/library/javaScript/JavaLibrary.txt");
+        return (ArrayList<JavaLibrary>) fileReaderAndWriter.readFile("/src/library/java/JavaLibrary.txt");
     }
 
     //Lấy danh sách thư viện Software từ server:
     @Override
     public ArrayList<SoftwareLibrary> getSoftwareLibrary() throws RemoteException {
         FileReaderAndWriter<SoftwareLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
-        return (ArrayList<SoftwareLibrary>) fileReaderAndWriter.readFile("/src/library/javaScript/SoftwareLibrary.txt");
+        return (ArrayList<SoftwareLibrary>) fileReaderAndWriter.readFile("/src/library/software/SoftwareLibrary.txt");
     }
 
     //Lấy file cần chuyển đi:
@@ -88,5 +88,4 @@ public class Server extends UnicastRemoteObject implements ISentFile, IUserManag
             e.printStackTrace();
         }
     }
-
 }
