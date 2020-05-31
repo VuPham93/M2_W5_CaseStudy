@@ -1,6 +1,8 @@
 package server;
 
 import client.clientInterface.IGetFile;
+import library.java.JavaLibrary;
+import library.software.SoftwareLibrary;
 import tools.FileReaderAndWriter;
 import library.javaScript.JavaScriptLibrary;
 import server.serverInterface.ILibraryManager;
@@ -42,9 +44,23 @@ public class Server extends UnicastRemoteObject implements ISentFile, IUserManag
 
     //Lấy danh sách thư viện JavaScript từ server:
     @Override
-    public ArrayList<JavaScriptLibrary> getLibrary() throws RemoteException {
+    public ArrayList<JavaScriptLibrary> getJSLibrary() throws RemoteException {
         FileReaderAndWriter<JavaScriptLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
         return (ArrayList<JavaScriptLibrary>) fileReaderAndWriter.readFile("/src/library/javaScript/JavaScriptLibrary.txt");
+    }
+
+    //Lấy danh sách thư viện Java từ server:
+    @Override
+    public ArrayList<JavaLibrary> getJavaLibrary() throws RemoteException {
+        FileReaderAndWriter<JavaLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
+        return (ArrayList<JavaLibrary>) fileReaderAndWriter.readFile("/src/library/javaScript/JavaLibrary.txt");
+    }
+
+    //Lấy danh sách thư viện Software từ server:
+    @Override
+    public ArrayList<SoftwareLibrary> getSoftwareLibrary() throws RemoteException {
+        FileReaderAndWriter<SoftwareLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
+        return (ArrayList<SoftwareLibrary>) fileReaderAndWriter.readFile("/src/library/javaScript/SoftwareLibrary.txt");
     }
 
     //Lấy file cần chuyển đi:

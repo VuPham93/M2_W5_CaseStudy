@@ -22,6 +22,7 @@ public class UserChecker {
     public boolean isValidUser(String input) {
         FileReaderAndWriter<User> fileReaderAndWriter = new FileReaderAndWriter<>();
         ArrayList<User> usersList = (ArrayList<User>) fileReaderAndWriter.readFile("/src/users/UsersList.txt");
+
         for (User user: usersList) {
             if (input.equals(user.getName()) || input.equals(user.getEmail())) {
                 return false;
@@ -33,7 +34,9 @@ public class UserChecker {
     public void saveNewUser(String name, String email, String password) {
         User user = new User(name, email, password);
         FileReaderAndWriter<User> fileReaderAndWriter = new FileReaderAndWriter<>();
+
         ArrayList<User> usersList = (ArrayList<User>) fileReaderAndWriter.readFile("/src/users/UsersList.txt");
+
         usersList.add(user);
         fileReaderAndWriter.writeToFile(usersList, "/src/users/UsersList.txt");
     }

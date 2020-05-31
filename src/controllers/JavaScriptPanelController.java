@@ -15,6 +15,9 @@ import server.serverInterface.ILibraryManager;
 import tools.FileDownloadManager;
 import tools.SwitchPanel;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.Naming;
@@ -82,7 +85,7 @@ public class JavaScriptPanelController implements Initializable {
 
     //Gọi interface ILibraryManager:
     ILibraryManager libraryManager = (ILibraryManager) Naming.lookup("rmi://192.168.1.68/Server");
-    ArrayList<JavaScriptLibrary> list = libraryManager.getLibrary();
+    ArrayList<JavaScriptLibrary> list = libraryManager.getJSLibrary();
 
     //Lấy dữ liệu trả về từ server hiển thị lên bảng:
     private final ObservableList<JavaScriptLibrary> javaScriptLibraries = FXCollections.observableArrayList(list);
@@ -96,15 +99,23 @@ public class JavaScriptPanelController implements Initializable {
     //Kích đúp vào dòng để download:
     public void clickItem(MouseEvent event) throws RemoteException, NotBoundException, MalformedURLException {
         if (event.getClickCount() == 2) {
-            FileDownloadManager<JavaScriptLibrary> downLoadFile = new FileDownloadManager<JavaScriptLibrary>();
-            downLoadFile.downLoadFile(event, tbData);
+            //Mở danh sách file đã tải:
+            FileDownloadManager<JavaScriptLibrary> downLoadFile = new FileDownloadManager<>();
+            String savedFileLocation = downLoadFile.fileIsDownloaded(tbData);
 
-//            try {
-//                Desktop.getDesktop().open(new File("C:\\Users\\hurah\\Desktop\\Slide04-JavaScriptOverview.pdf"));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-
+            //Kiểm tra xem đã tải file chưa:
+            if (!savedFileLocation.equals("File not found")) {
+                //Mở file:
+                try {
+                    Desktop.getDesktop().open(new File(savedFileLocation));
+                } catch (IOException e) {
+                    downLoadFile.downLoadFile(event, tbData);
+                }
+            }
+            else {
+                //Tải file:
+                downLoadFile.downLoadFile(event, tbData);
+            }
         }
     }
 }
