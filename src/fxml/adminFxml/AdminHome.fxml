@@ -55,7 +55,6 @@
          <top>
             <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="947.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <FontAwesomeIcon fx:id="btnLibraryManager" glyphName="BOOK" size="25" />
                   <FontAwesomeIcon fx:id="btnUserManager" glyphName="USER" size="25" />
                   <FontAwesomeIcon fx:id="btnMin" glyphName="MINUS" onMouseClicked="#minWindow" size="27" text="" />
                   <FontAwesomeIcon fx:id="btnClose" glyphName="CLOSE" onMouseClicked="#closeWindow" size="30" text="" />

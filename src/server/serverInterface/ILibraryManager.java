@@ -14,4 +14,10 @@ public interface ILibraryManager extends Remote {
     ArrayList<JavaLibrary> getJavaLibrary() throws RemoteException;
 
     ArrayList<SoftwareLibrary> getSoftwareLibrary() throws RemoteException;
+
+    void saveJSLibrary(ArrayList<JavaScriptLibrary> javaScriptLibraries) throws RemoteException;
+
+    void saveJavaLibrary(ArrayList<JavaLibrary> javaLibraries) throws RemoteException;
+
+    void saveSoftwareLibrary(ArrayList<SoftwareLibrary> softwareLibraries) throws RemoteException;
 }

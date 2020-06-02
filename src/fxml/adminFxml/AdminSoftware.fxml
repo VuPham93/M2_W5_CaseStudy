@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="JSPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.adminController.AdminJavaPanelController">
+<AnchorPane fx:id="JSPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.adminController.AdminSoftwareController">
    <children>
-      <Pane maxHeight="80.0" prefHeight="80.0" prefWidth="942.0" style="-fx-background-color: #2D3180;" stylesheets="@../../styling/LibraryStyling.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane maxHeight="80.0" prefHeight="80.0" prefWidth="942.0" style="-fx-background-color: #FF521E;" stylesheets="@../../styling/LibraryStyling.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="39.0" layoutY="6.0" stylesheets="@../../styling/LibraryStyling.css" text="Java" textFill="WHITE">
+            <Label layoutX="39.0" layoutY="6.0" stylesheets="@../../styling/LibraryStyling.css" text="Software">
                <font>
                   <Font size="48.0" />
                </font>
             </Label>
-            <Label layoutX="140.0" layoutY="41.0" text="Advanced Programming with Java" textFill="WHITE">
+            <Label layoutX="240.0" layoutY="41.0" text="For learning in CodeGym">
                <font>
                   <Font size="13.0" />
                </font>
@@ -44,10 +44,10 @@
       <TableView fx:id="tbData" editable="true" layoutX="36.0" layoutY="74.0" onMouseClicked="#clickItem" prefHeight="535.0" prefWidth="908.0" style="-fx-border-color: #7229a0;" stylesheets="@../../styling/LibraryStyling.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
          <columns>
             <TableColumn id="colIndex" fx:id="colSerial" maxWidth="50.0" onEditCommit="#changeSerial" prefWidth="40.0" resizable="false" text="Stt" />
-            <TableColumn id="colLesson" fx:id="colLesson" maxWidth="200.0" minWidth="200.0" onEditCommit="#changeName" prefWidth="200.0" text="Bài học" />
-            <TableColumn id="colDetail" fx:id="colDetails" maxWidth="500.0" minWidth="300.0" onEditCommit="#changeDetail" prefWidth="400.0" text="Nội dung" />
-            <TableColumn fx:id="colFileSize" maxWidth="100.0" minWidth="100.0" onEditCommit="#changeSize" prefWidth="100.0" text="Kích thước file" />
-            <TableColumn fx:id="colPath" maxWidth="500.0" minWidth="200.0" onEditCommit="#changePath" prefWidth="300.0" text="Đường dẫn" />
+            <TableColumn id="colLesson" fx:id="colLesson" maxWidth="200.0" minWidth="118.0" onEditCommit="#changeName" prefWidth="167.0" text="Phần mềm" />
+            <TableColumn id="colDetail" fx:id="colDetails" maxWidth="500.0" minWidth="86.0" onEditCommit="#changeDetail" prefWidth="223.0" text="Nhà phát triển" />
+            <TableColumn fx:id="colFileSize" maxWidth="358.0" minWidth="94.0" onEditCommit="#changeSize" prefWidth="172.0" text="Kích thước file" />
+            <TableColumn fx:id="colPath" maxWidth="500.0" minWidth="200.0" onEditCommit="#changePath" prefWidth="414.0" text="Đường dẫn" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

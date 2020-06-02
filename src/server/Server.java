@@ -74,6 +74,24 @@ public class Server extends UnicastRemoteObject implements ISentFile, IUserManag
         return (ArrayList<SoftwareLibrary>) fileReaderAndWriter.readFile(FinalList.SOFTWARE_LIBRARY);
     }
 
+    @Override
+    public void saveJSLibrary(ArrayList<JavaScriptLibrary> javaScriptLibraries) throws RemoteException {
+        FileReaderAndWriter<JavaScriptLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
+        fileReaderAndWriter.writeToFile(javaScriptLibraries, FinalList.JAVASCRIPT_LIBRARY);
+    }
+
+    @Override
+    public void saveJavaLibrary(ArrayList<JavaLibrary> javaLibraries) throws RemoteException {
+        FileReaderAndWriter<JavaLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
+        fileReaderAndWriter.writeToFile(javaLibraries, FinalList.JAVA_LIBRARY);
+    }
+
+    @Override
+    public void saveSoftwareLibrary(ArrayList<SoftwareLibrary> softwareLibraries) throws RemoteException {
+        FileReaderAndWriter<SoftwareLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
+        fileReaderAndWriter.writeToFile(softwareLibraries, FinalList.SOFTWARE_LIBRARY);
+    }
+
     //Lấy file cần chuyển đi:
     @Override
     public void getRequestedFile(String fileName) throws RemoteException {

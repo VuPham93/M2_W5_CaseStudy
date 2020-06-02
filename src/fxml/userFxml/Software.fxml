@@ -43,9 +43,9 @@
          <columns>
             <TableColumn id="colIndex" fx:id="colSerial" editable="false" maxWidth="50.0" prefWidth="40.0" resizable="false" text="Stt" />
             <TableColumn id="colLesson" fx:id="colLesson" editable="false" maxWidth="300.0" minWidth="200.0" prefWidth="300.0" text="Phần mềm" />
-            <TableColumn id="colDetail" fx:id="colDetails" editable="false" maxWidth="600.0" minWidth="100.0" prefWidth="491.0" text="Chức năng" />
-            <TableColumn fx:id="colFileSize" editable="false" prefWidth="75.0" text="Kích thước file" visible="false" />
-            <TableColumn fx:id="colPath" editable="false" prefWidth="214.0" text="Đường dẫn" visible="false" />
+            <TableColumn id="colDetail" fx:id="colDetails" editable="false" maxWidth="500.0" minWidth="100.0" prefWidth="300.0" text="Nhà phát triển" />
+            <TableColumn fx:id="colFileSize" editable="false" maxWidth="500.0" prefWidth="400.0" text="Kích thước file" />
+            <TableColumn fx:id="colPath" editable="false" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" text="Đường dẫn" visible="false" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

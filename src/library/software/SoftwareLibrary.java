@@ -3,21 +3,21 @@ package library.software;
 import library.Library;
 
 public class SoftwareLibrary extends Library {
-    private String developer;
+    private String detail;
 
     public SoftwareLibrary() {
     }
 
     public SoftwareLibrary(String serial, String name, String size, String path, String developer) {
         super(serial, name, size, path);
-        this.developer = developer;
+        this.detail = developer;
     }
 
-    public String getDeveloper() {
-        return developer;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setDeveloper(String developer) {
-        this.developer = developer;
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 }

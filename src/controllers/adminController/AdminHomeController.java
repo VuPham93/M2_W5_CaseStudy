@@ -8,15 +8,13 @@ import tools.FinalList;
 import tools.SwitchPanel;
 
 public class AdminHomeController extends HomeController {
-    @FXML
-    private FontAwesomeIcon btnLibraryManager;
 
     @FXML
     private FontAwesomeIcon btnUserManager;
 
     @FXML
     void goBack(MouseEvent event) {
-        SwitchPanel.switchPanel(event, FinalList.ADMIN_HOME_PANEL);
+        SwitchPanel.switchPanel(event, FinalList.SIGN_IN_PANEL);
     }
 
     @FXML

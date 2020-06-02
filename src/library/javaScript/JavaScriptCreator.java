@@ -13,8 +13,8 @@ public class JavaScriptCreator {
 //        javaScriptLibraries.add(new JavaScriptLibrary("7","LoopStatements","2Mb",folderPath + "Slide_07_LoopStatements.pdf","Câu lệnh lặp"));
 //        javaScriptLibraries.add(new JavaScriptLibrary("8","Arrays","2Mb",folderPath + "Slide_08_Arrays.pdf","Mảng"));
 //        javaScriptLibraries.add(new JavaScriptLibrary("9","Function","2Mb",folderPath + "Slide_09_Function.pdf","Hàm"));
-//        javaScriptLibraries.add(new JavaScriptLibrary("10","Introduction to OOP","2Mb",folderPath + "Slide_10_Introduction_to_OOP.pdf","Lập trình Hướng Đối tượng"));
-//        javaScriptLibraries.add(new JavaScriptLibrary("11","Objects and Classes","2Mb",folderPath + "Slide_11_Objects_and_Classes.pdf","Lớp và đối tượng trong lập trình Hướng Đối tượng"));
+//        javaScriptLibraries.add(new JavaScriptLibrary("10","Introduction to OOP","2Mb",folderPath + "Slide_10_Introduction_to_OOP.pdf","Lập trình hướng đối tượng"));
+//        javaScriptLibraries.add(new JavaScriptLibrary("11","Objects and Classes","2Mb",folderPath + "Slide_11_Objects_and_Classes.pdf","Lớp và đối tượng trong lập trình hướng đối tượng"));
 //
 //        FileReaderAndWriter<JavaScriptLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
 //        fileReaderAndWriter.writeToFile(javaScriptLibraries, "/src/library/javaScript/JavaScriptLibrary.txt");

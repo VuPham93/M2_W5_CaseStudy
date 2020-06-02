@@ -107,26 +107,23 @@ public abstract class LibraryController<LibraryType extends Library> implements 
         colFileSize.setCellValueFactory(new PropertyValueFactory<>("size"));
         colPath.setCellValueFactory(new PropertyValueFactory<>("path"));
 
-        editableColumn();
+        editAbleTable();
     }
 
     //Cài đặt tính năng chỉnh sửa cho từng cột:
-    private void editableColumn() {
-        editTable(colSerial);
-        editTable(colLesson);
-        editTable(colDetails);
-        editTable(colFileSize);
-        editTable(colPath);
+    private void editAbleTable() {
+        editAbleColumn(colSerial);
+        editAbleColumn(colLesson);
+        editAbleColumn(colDetails);
+        editAbleColumn(colFileSize);
+        editAbleColumn(colPath);
 
         tbData.setEditable(true);
     }
 
     //Sự kiện kích chuột để chỉnh sửa dòng:
-    private void editTable(TableColumn<LibraryType, String> column) {
+    private void editAbleColumn(TableColumn<LibraryType, String> column) {
         column.setCellFactory(TextFieldTableCell.forTableColumn());
-        column.setOnEditCommit(e ->{
-            e.getTableView().getItems().get(e.getTablePosition().getRow()).setSerial(e.getNewValue());
-        });
     }
 
     //Tải danh sách thư viện:
