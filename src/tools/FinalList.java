@@ -1,7 +1,7 @@
 package tools;
 
 public class FinalList {
-    public static final String SERVER_IP = "rmi://192.168.2.205/Server";
+    public static final String SERVER_IP = "rmi://192.168.1.68/Server";
     public static final String USER_SAVE_LOCATION = "/src/users/UsersList.txt";
     public static final String ADMIN = "admin";
     public static final String USER = "user";
