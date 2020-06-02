@@ -22,7 +22,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnSetting" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="387.0" prefWidth="725.0" style="-fx-background-color: BLACK;" text="            Setting" textFill="#fc5025" GridPane.rowIndex="4">
+                  <Button fx:id="btnSetting" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#openForgotPasswordPanel" prefHeight="387.0" prefWidth="725.0" style="-fx-background-color: BLACK;" text="            Setting" textFill="#fc5025" GridPane.rowIndex="4">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -55,6 +55,8 @@
          <top>
             <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="947.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
+                  <FontAwesomeIcon fx:id="btnLibraryManager" glyphName="BOOK" size="25" />
+                  <FontAwesomeIcon fx:id="btnUserManager" glyphName="USER" size="25" />
                   <FontAwesomeIcon fx:id="btnMin" glyphName="MINUS" onMouseClicked="#minWindow" size="27" text="" />
                   <FontAwesomeIcon fx:id="btnClose" glyphName="CLOSE" onMouseClicked="#closeWindow" size="30" text="" />
                </children>

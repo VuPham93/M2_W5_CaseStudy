@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import tools.FinalList;
 import tools.SwitchPanel;
 
 import java.net.MalformedURLException;
@@ -60,24 +61,30 @@ public class SignInController {
 
     //Kiểm tra thông tin, nếu đúng vào màn hình chính:
     public void openHomePanel(MouseEvent event) {
-        if (checkSignInInfo().equals("Admin")) {
-            SwitchPanel.switchPanel(event, "/fxml/adminFxml/AdminHome.fxml");
+        if (checkSignInInfo().equals(FinalList.ADMIN)) {
+            SwitchPanel.switchPanel(event, FinalList.ADMIN_HOME_PANEL);
         }
-        if (checkSignInInfo().equals("User")) {
-            SwitchPanel.switchPanel(event, "/fxml/userFxml/Home.fxml");
+        if (checkSignInInfo().equals(FinalList.USER)) {
+            SwitchPanel.switchPanel(event, FinalList.USER_HOME_PANEL);
         }
     }
 
     //Vào màn hình đăng ký:
     public void openSignUpPanel(MouseEvent event) {
-        SwitchPanel.switchPanel(event, "/fxml/userFxml/SignUp.fxml");
+        SwitchPanel.switchPanel(event, FinalList.SIGN_UP_PANEL);
+    }
+
+
+    //Vào màn hình đổi password:
+    public void openForgotPasswordPanel(MouseEvent event) {
+        SwitchPanel.switchPanel(event, FinalList.FORGOT_PASSWORD_PANEL);
     }
 
     //Gọi interface IUserManager:
     IUserManager userManager;
     {
         try {
-            userManager = (IUserManager) Naming.lookup("rmi://192.168.1.68/Server");
+            userManager = (IUserManager) Naming.lookup(FinalList.SERVER_IP);
         } catch (NotBoundException | MalformedURLException | RemoteException e) {
             e.printStackTrace();
         }
@@ -91,22 +98,23 @@ public class SignInController {
 
         if (nameOrEmail.isEmpty() || password.isEmpty()) {
             signInStatus(Color.TOMATO, "Empty credentials");
-            status = "false";
+            status = FinalList.NOT_AN_USER;
         }
         else {
             try {
-                if ((userManager.checkUser(nameOrEmail, password)).equals("false")) {
+                String isUser = userManager.checkUser(nameOrEmail, password);
+                if (isUser.equals(FinalList.NOT_AN_USER)) {
                     signInStatus(Color.TOMATO, "Enter Correct Email/Password");
-                    status = "false";
+                    status = FinalList.NOT_AN_USER;
                 }
                 else {
-                    if ((userManager.checkUser(nameOrEmail, password)).equals("Admin")) {
+                    if (isUser.equals(FinalList.ADMIN)) {
                         signInStatus(Color.GREEN, "Admin login Successful..Redirecting..");
-                        status = "Admin";
+                        status = FinalList.ADMIN;
                     }
                     else {
                         signInStatus(Color.GREEN, "Login Successful..Redirecting..");
-                        status = "User";
+                        status = FinalList.USER;
                     }
                 }
             } catch (RemoteException e) {

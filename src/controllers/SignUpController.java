@@ -1,4 +1,4 @@
-package controllers.userController;
+package controllers;
 
 import server.serverInterface.IUserManager;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import tools.FinalList;
 import tools.SwitchPanel;
 
 import java.net.MalformedURLException;
@@ -67,14 +68,14 @@ public class SignUpController {
 
     @FXML
     void goBack(MouseEvent event) {
-        SwitchPanel.switchPanel(event, "/fxml/SignIn.fxml");
+        SwitchPanel.switchPanel(event, FinalList.SIGN_IN_PANEL);
     }
 
     //Gọi interface IUserManager:
     IUserManager userManager;
     {
         try {
-            userManager = (IUserManager) Naming.lookup("rmi://192.168.1.68/Server");
+            userManager = (IUserManager) Naming.lookup(FinalList.SERVER_IP);
         } catch (NotBoundException | MalformedURLException | RemoteException e) {
             e.printStackTrace();
         }
@@ -93,13 +94,13 @@ public class SignUpController {
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
-            SwitchPanel.switchPanel(event, "/fxml/SignIn.fxml");
+            SwitchPanel.switchPanel(event, FinalList.SIGN_IN_PANEL);
         }
     }
 
     //Kiểm tra tên đăng ký:
     public boolean isValidUserName(String name) {
-        String regex = "[A-Z][a-z0-9]{1,9}$";
+        String regex = FinalList.USER_NAME_REGEX;
         boolean status = true;
 
         signUpStatus(Color.GREEN, "Username available", lblUserErrors);
@@ -111,7 +112,7 @@ public class SignUpController {
 
         try {
             if (!userManager.checkValidUser(name)) {
-                signUpStatus(Color.TOMATO, "Username already exists", lblUserErrors);
+                signUpStatus(Color.TOMATO, "User already exists", lblUserErrors);
                 status = false;
             }
         } catch (RemoteException e) {
@@ -123,7 +124,7 @@ public class SignUpController {
 
     //Kiểm tra email đăng ký:
     public boolean isValidEmail(String email) {
-        String regex = "^[a-zA-Z][\\w]{0,15}+@gmail.com$";
+        String regex = FinalList.EMAIL_REGEX;
         boolean status = true;
 
         signUpStatus(Color.GREEN, "Email available", lblEmailErrors);
@@ -135,7 +136,7 @@ public class SignUpController {
 
         try {
             if (!userManager.checkValidUser(email)) {
-                signUpStatus(Color.TOMATO, "Username already exists", lblEmailErrors);
+                signUpStatus(Color.TOMATO, "User already exists", lblEmailErrors);
                 status = false;
             }
         } catch (RemoteException e) {
@@ -147,7 +148,7 @@ public class SignUpController {
 
     //Kiểm tra mật khẩu:
     public boolean isValidPassword(String password) {
-        String regex = "[a-z0-9]{3,10}";
+        String regex = FinalList.PASSWORD_REGEX;
         boolean status = true;
 
         signUpStatus(Color.GREEN, "Right password form", lblPasswordErrors);

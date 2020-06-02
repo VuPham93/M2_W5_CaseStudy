@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import library.Library;
 import tools.FileDownloadManager;
+import tools.FinalList;
 import tools.SwitchPanel;
 
 import java.awt.*;
@@ -80,7 +81,7 @@ public abstract class LibraryController<LibraryType extends Library> implements 
 
     @FXML
     void goBack(MouseEvent event) {
-        SwitchPanel.switchPanel(event, "/fxml/userFxml/Home.fxml");
+        SwitchPanel.switchPanel(event, FinalList.USER_HOME_PANEL);
     }
 
     @Override

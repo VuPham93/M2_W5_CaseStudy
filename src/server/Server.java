@@ -8,6 +8,7 @@ import server.serverInterface.ILibraryManager;
 import server.serverInterface.ISentFile;
 import server.serverInterface.IUserManager;
 import tools.FileReaderAndWriter;
+import tools.FinalList;
 import users.UserChecker;
 
 import java.io.File;
@@ -36,31 +37,41 @@ public class Server extends UnicastRemoteObject implements ISentFile, IUserManag
         return userChecker.isValidUser(userNameOrEmail);
     }
 
+    @Override
+    public boolean checkOldUser(String name, String email) throws RemoteException {
+        return userChecker.isOldUser(name, email);
+    }
+
     //Server lưu user mới:
     @Override
     public void saveNewUser(String name, String email, String password) throws RemoteException {
         userChecker.saveNewUser(name, email, password);
     }
 
+    @Override
+    public void saveUserInfo(String name, String email, String password) throws RemoteException {
+        userChecker.saveUserInfo(name, email, password);
+    }
+
     //Lấy danh sách thư viện JavaScript từ server:
     @Override
     public ArrayList<JavaScriptLibrary> getJSLibrary() throws RemoteException {
         FileReaderAndWriter<JavaScriptLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
-        return (ArrayList<JavaScriptLibrary>) fileReaderAndWriter.readFile("/src/library/javaScript/JavaScriptLibrary.txt");
+        return (ArrayList<JavaScriptLibrary>) fileReaderAndWriter.readFile(FinalList.JAVASCRIPT_LIBRARY);
     }
 
     //Lấy danh sách thư viện Java từ server:
     @Override
     public ArrayList<JavaLibrary> getJavaLibrary() throws RemoteException {
         FileReaderAndWriter<JavaLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
-        return (ArrayList<JavaLibrary>) fileReaderAndWriter.readFile("/src/library/java/JavaLibrary.txt");
+        return (ArrayList<JavaLibrary>) fileReaderAndWriter.readFile(FinalList.JAVA_LIBRARY);
     }
 
     //Lấy danh sách thư viện Software từ server:
     @Override
     public ArrayList<SoftwareLibrary> getSoftwareLibrary() throws RemoteException {
         FileReaderAndWriter<SoftwareLibrary> fileReaderAndWriter = new FileReaderAndWriter<>();
-        return (ArrayList<SoftwareLibrary>) fileReaderAndWriter.readFile("/src/library/software/SoftwareLibrary.txt");
+        return (ArrayList<SoftwareLibrary>) fileReaderAndWriter.readFile(FinalList.SOFTWARE_LIBRARY);
     }
 
     //Lấy file cần chuyển đi:

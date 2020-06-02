@@ -22,7 +22,7 @@ public class FileDownloadManager<LibraryType extends Library> {
         String selectedItemPath = getSelectedItemPath(tbData);
 
         //Gọi interface gửi file đã lấy được địa chỉ từ server:
-        ISentFile server = (ISentFile) Naming.lookup("rmi://192.168.1.68/Server");
+        ISentFile server = (ISentFile) Naming.lookup(FinalList.SERVER_IP);
         server.getRequestedFile(selectedItemPath);
 
         //Mở của sổ để chọn địa chỉ lưu file trên client:
@@ -54,7 +54,7 @@ public class FileDownloadManager<LibraryType extends Library> {
 
         //Mở danh sách file đã lưu:
         FileReaderAndWriter<SavedFile> fileReaderAndWriter = new FileReaderAndWriter<>();
-        ArrayList<SavedFile> savedFiles = (ArrayList<SavedFile>) fileReaderAndWriter.readFile("/src/library/SavedList.txt");
+        ArrayList<SavedFile> savedFiles = (ArrayList<SavedFile>) fileReaderAndWriter.readFile( FinalList.SAVED_LIST);
 
         //Kiểm tra xem file có nằm trong danh sách đã tải về hay không:
         for (SavedFile savedFile: savedFiles) {
@@ -76,11 +76,11 @@ public class FileDownloadManager<LibraryType extends Library> {
         SavedFile savedFile = new SavedFile(fileName, saveLocation);
         FileReaderAndWriter<SavedFile> fileReaderAndWriter = new FileReaderAndWriter<>();
 
-        ArrayList<SavedFile> savedFiles = (ArrayList<SavedFile>) fileReaderAndWriter.readFile("/src/library/SavedList.txt");
+        ArrayList<SavedFile> savedFiles = (ArrayList<SavedFile>) fileReaderAndWriter.readFile( FinalList.SAVED_LIST);
 
         savedFiles.add(savedFile);
 
-        fileReaderAndWriter.writeToFile(savedFiles, "/src/library/SavedList.txt");
+        fileReaderAndWriter.writeToFile(savedFiles, FinalList.SAVED_LIST);
     }
 
     //Lấy đường dẫn file trên server từ dòng bị kích đúp chuột:

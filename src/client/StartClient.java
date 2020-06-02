@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import tools.FinalList;
 
 public class StartClient extends Application {
     private double xOffset = 0;
@@ -15,7 +16,7 @@ public class StartClient extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignIn.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(FinalList.SIGN_IN_PANEL));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setResizable(false);
 
@@ -45,7 +46,7 @@ public class StartClient extends Application {
     //Khởi chạy phần mềm:
     public static void main(String[] args) {
         try {
-            System.out.println("Connected to server");
+            System.out.println("Connecting to server");
             //Bật màn hình đăng nhập:
             launch(args);
 

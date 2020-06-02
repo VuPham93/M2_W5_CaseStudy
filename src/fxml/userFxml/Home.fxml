@@ -22,7 +22,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnSetting" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="387.0" prefWidth="725.0" style="-fx-background-color: BLACK;" text="            Setting" textFill="#fc5025" GridPane.rowIndex="4">
+                  <Button fx:id="btnSetting" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#openForgotPasswordPanel" prefHeight="387.0" prefWidth="725.0" style="-fx-background-color: BLACK;" text="            Setting" textFill="#fc5025" GridPane.rowIndex="4">
                      <font>
                         <Font size="36.0" />
                      </font>
