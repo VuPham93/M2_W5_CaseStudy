@@ -41,7 +41,7 @@
             <TableColumn id="colIndex" fx:id="colType" maxWidth="50.0" onEditCommit="#changeType" prefWidth="40.0" resizable="false" text="Loại" />
             <TableColumn id="colLesson" fx:id="colName" maxWidth="200.0" minWidth="200.0" onEditCommit="#changeName" prefWidth="200.0" text="Tài khoản" />
             <TableColumn id="colDetail" fx:id="colEmail" maxWidth="500.0" minWidth="300.0" onEditCommit="#changeEmail" prefWidth="400.0" text="Email" />
-            <TableColumn fx:id="colPassword" maxWidth="300.0" minWidth="100.0" onEditCancel="#changePassword" onEditCommit="#changeSize" prefWidth="300.0" text="Mật khẩu" />
+            <TableColumn fx:id="colPassword" maxWidth="300.0" minWidth="100.0" onEditCommit="#changePassword" prefWidth="300.0" text="Mật khẩu" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
