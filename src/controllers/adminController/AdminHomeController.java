@@ -26,6 +26,11 @@ public class AdminHomeController extends HomeController {
     }
 
     @FXML
+    void openUserPanel(MouseEvent event) {
+        SwitchPanel.switchPanel(event, FinalList.USER_PANEL);
+    }
+
+    @FXML
     void openJavaScriptPanel(MouseEvent event) {
         SwitchPanel.switchPanel(event, FinalList.ADMIN_JAVASCRIPT_PANEL);
     }

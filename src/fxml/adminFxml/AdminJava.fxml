@@ -26,8 +26,10 @@
          <top>
             <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="947.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
+                  <FontAwesomeIcon fx:id="btnCut" glyphName="CUT" onMouseClicked="#deleteRow" size="22" />
+                  <FontAwesomeIcon fx:id="btnAddLibrary" glyphName="PLUS" onMouseClicked="#openAddLibraryPanel" size="25" />
                   <FontAwesomeIcon fx:id="btnLibraryManager" glyphName="BOOK" onMouseClicked="#saveData" size="25" />
-                  <FontAwesomeIcon fx:id="btnUserManager" glyphName="USER" size="25" />
+                  <FontAwesomeIcon fx:id="btnUserManager" glyphName="USER" onMouseClicked="#openUserPanel" size="25" />
                   <FontAwesomeIcon fx:id="btnMin" glyphName="MINUS" onMouseClicked="#minWindow" size="27" text="" />
                   <FontAwesomeIcon fx:id="btnMax" glyphName="ALIGN_RIGHT" onMouseClicked="#maxWindow" size="23" wrappingWidth="23.571450233459473" />
                   <FontAwesomeIcon fx:id="btnClose" glyphName="CLOSE" onMouseClicked="#closeWindow" size="30" text="" />

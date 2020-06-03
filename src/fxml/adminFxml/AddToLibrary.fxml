@@ -12,7 +12,7 @@
                 <TextField fx:id="txtName" layoutX="8.0" layoutY="60.0" prefHeight="34.0" prefWidth="628.0" promptText="name" />
                 <TextField fx:id="txtSize" layoutX="8.0" layoutY="122.0" prefHeight="34.0" prefWidth="628.0" promptText="size" stylesheets="@../../styling/SignInStyling.css" />
                 <TextField fx:id="txtPath" layoutX="8.0" layoutY="183.0" prefHeight="34.0" prefWidth="628.0" promptText="path" stylesheets="@../../styling/SignInStyling.css" />
-                <TextField fx:id="txtDetail" layoutX="9.0" layoutY="245.0" prefHeight="34.0" prefWidth="628.0" promptText="detail or deverloper" stylesheets="@../../styling/SignInStyling.css" />
+                <TextField fx:id="txtDetail" layoutX="9.0" layoutY="245.0" prefHeight="34.0" prefWidth="628.0" promptText="detail" stylesheets="@../../styling/SignInStyling.css" />
                 <Button fx:id="btnAddToJS" layoutX="7.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#addToJSLibrary" prefHeight="40.0" prefWidth="187.0" stylesheets="@../../styling/SignInStyling.css" text="Add to JavaScript Library" />
             <Button fx:id="btnAddToJava" layoutX="228.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#addToJavaLibrary" prefHeight="40.0" prefWidth="187.0" stylesheets="@../../styling/SignInStyling.css" text="Add to Java Library" />
             <Button fx:id="btnAddToSoftware" layoutX="450.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#addToSoftwareLibrary" prefHeight="40.0" prefWidth="187.0" stylesheets="@../../styling/SignInStyling.css" text="Add to Software Library" />

@@ -25,4 +25,5 @@ public class FinalList {
     public static final String JAVA_LIBRARY = "/src/library/java/JavaLibrary.txt";
     public static final String SOFTWARE_LIBRARY = "/src/library/software/SoftwareLibrary.txt";
     public static final String ADD_LIBRARY = "/fxml/adminFxml/AddToLibrary.fxml";
+    public static final String USER_PANEL = "/fxml/adminFxml/User.fxml";
 }

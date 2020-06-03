@@ -1,10 +1,12 @@
 package controllers.adminController;
 
 import controllers.userController.JavaScriptPanelController;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import library.Library;
 import library.javaScript.JavaScriptLibrary;
 import server.serverInterface.ILibraryManager;
 import tools.FinalList;
@@ -22,8 +24,27 @@ public class AdminJavaScriptPanelController extends JavaScriptPanelController {
     private TableView<JavaScriptLibrary> tbData;
 
     @FXML
+    private FontAwesomeIcon btnCut;
+
+    @FXML
     void goBack(MouseEvent event) {
         SwitchPanel.switchPanel(event, FinalList.ADMIN_HOME_PANEL);
+    }
+
+    @FXML
+    void openUserPanel(MouseEvent event) {
+        SwitchPanel.switchPanel(event, FinalList.USER_PANEL);
+    }
+
+    @FXML
+    void openAddLibraryPanel(MouseEvent event) {
+        SwitchPanel.switchPanel(event, FinalList.ADD_LIBRARY);
+    }
+
+    @FXML
+    void deleteRow(MouseEvent event) {
+        Library selectedItem = tbData.getSelectionModel().getSelectedItem();
+        tbData.getItems().remove(selectedItem);
     }
 
     @FXML

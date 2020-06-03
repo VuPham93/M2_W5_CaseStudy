@@ -9,6 +9,7 @@ import server.serverInterface.ISentFile;
 import server.serverInterface.IUserManager;
 import tools.FileReaderAndWriter;
 import tools.FinalList;
+import users.User;
 import users.UserChecker;
 
 import java.io.File;
@@ -51,6 +52,18 @@ public class Server extends UnicastRemoteObject implements ISentFile, IUserManag
     @Override
     public void saveUserInfo(String name, String email, String password) throws RemoteException {
         userChecker.saveUserInfo(name, email, password);
+    }
+
+    @Override
+    public void saveUserList(ArrayList<User> userList) throws RemoteException {
+        FileReaderAndWriter<User> fileReaderAndWriter = new FileReaderAndWriter<>();
+        fileReaderAndWriter.writeToFile(userList, FinalList.USER_SAVE_LOCATION);
+    }
+
+    @Override
+    public ArrayList<User> getUserList() throws RemoteException {
+        FileReaderAndWriter<User> fileReaderAndWriter = new FileReaderAndWriter<>();
+        return (ArrayList<User>) fileReaderAndWriter.readFile(FinalList.USER_SAVE_LOCATION);
     }
 
     //Lấy danh sách thư viện JavaScript từ server:
