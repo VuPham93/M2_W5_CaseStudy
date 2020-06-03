@@ -25,6 +25,7 @@ public class AdminJavaScriptPanelController extends JavaScriptPanelController {
     void goBack(MouseEvent event) {
         SwitchPanel.switchPanel(event, FinalList.ADMIN_HOME_PANEL);
     }
+
     @FXML
     private void saveData() {
         ArrayList<JavaScriptLibrary> jsList = new ArrayList<>(tbData.getItems());

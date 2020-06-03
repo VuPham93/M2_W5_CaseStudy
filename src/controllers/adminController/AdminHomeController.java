@@ -13,6 +13,14 @@ public class AdminHomeController extends HomeController {
     private FontAwesomeIcon btnUserManager;
 
     @FXML
+    private FontAwesomeIcon btnAddLibrary;
+
+    @FXML
+    void openAddLibraryPanel(MouseEvent event) {
+        SwitchPanel.switchPanel(event, FinalList.ADD_LIBRARY);
+    }
+
+    @FXML
     void goBack(MouseEvent event) {
         SwitchPanel.switchPanel(event, FinalList.SIGN_IN_PANEL);
     }

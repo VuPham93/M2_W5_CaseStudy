@@ -4,7 +4,6 @@ import client.clientInterface.IGetFile;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.nio.file.Files;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
@@ -32,7 +31,7 @@ public class Client extends UnicastRemoteObject implements IGetFile {
 
             System.out.println("Done writing data...");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("No chosen path");
         }
     }
 
